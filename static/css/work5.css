@@ -1,0 +1,270 @@
+body {
+    background-color: #f8f8f8;
+    margin: 0;
+    height: 100%;
+}
+
+.menu {
+    margin-top: 0;
+}
+
+.menu li {
+    font-style: italic;
+    font-size: 20px;
+    list-style-type: none;
+    margin-left: 10px;
+    display: inline;
+}
+
+.menu li a {
+    color: black;
+    text-decoration: none
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+li {
+    list-style-type: none;
+}
+
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+.header {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    border-bottom: 1px solid;
+}
+
+.logo-link {
+    margin-left: 0px;
+    text-decoration: none;
+}
+
+.logo {
+    height: 60px;
+    vertical-align: text-top;
+}
+
+.footer {
+    height: 210px;
+    background-color: rgb(243, 239, 239);
+    text-align: left;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    /*! flex: 1; */
+}
+
+.title {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.book-item {
+    display: inline-block;
+    flex-direction: column;
+    margin-right: 30px;
+    padding: 10px;
+    margin: 0 5px;
+    background-color: rgb(250, 243, 243);
+    text-align: center;
+    flex: 1;
+}
+
+.book-link {
+    display: block;
+}
+
+.book-title {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.book-img {
+    height: 200px;
+}
+
+.book-buy {
+    margin: auto;
+    height: 63px;
+    width: 236px;
+    background-color: lightcoral;
+    font-size: 36px;
+    border-radius: 40px;
+    display: block;
+}
+
+.book-buy:hover {
+    background-color: #A52A2A;
+}
+
+.description {
+    color: #484343;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.list {
+    color: #382e80;
+    font-weight: 300;
+    line-height: 16px;
+    font-size: 17px;
+}
+
+.myform {
+    width: 312px;
+    height: 23px;
+    color: #A52A2A;
+    font-weight: 300;
+    line-height: 16px;
+    font-size: 17px;
+    margin-left: 1px;
+    margin-bottom: 10px;
+}
+
+.my-email:focus {
+    color: green;
+    background-color: aquamarine;
+}
+
+.my-email {
+    margin-left: 1px;
+    width: 312px;
+}
+
+.message {
+    width: 311px;
+    height: 100px;
+}
+
+input,
+textarea {
+    text-transform: capitalize;
+}
+
+.footer-item {
+    flex-direction: column;
+    margin-right: 0px;
+    font-size: 12px;
+    font-size: 17px;
+    text-align: center;
+    flex: 1
+}
+
+.footer-bottom {
+    display: flex;
+    order: 2;
+}
+
+.footer-bottom .footer-item {
+    margin: auto;
+}
+
+.footer-top {
+    order: 1;
+    display: flex;
+    flex-grow: 1;
+}
+
+.footer-list {
+    padding: 0;
+    font-size: 15px
+}
+
+.footer-copy {
+    padding: 0;
+    font-size: 12px;
+}
+
+.pluso {
+    text-align: center!important;
+}
+
+.footer-top .footer-item {
+    margin: 8px;
+    width: 50px;
+    border: #000000;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.catalog-menu {
+    display: block;
+    padding: 0px;
+    margin: 0;
+}
+
+.catalog-menu li {
+    display: inline;
+    margin: 5px;
+    padding: 0px;
+}
+
+.catalog-menu li:first-child {
+    margin-left: 0px;
+    padding: 0px;
+}
+
+.book-block {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.price {
+    margin-top: 17px;
+    margin-bottom: 10px;
+    width: 130px;
+    padding-left: 0px;
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+    font-weight: 100;
+    font-family: sans-serif;
+}
+
+.productinfo {
+    display: flex;
+}
+
+.productinfo>div:nth-child(1) {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
+.productinfo>div:nth-child(2) {
+    flex: 1
+}
+
+.productinfo>div:nth-child(1) img {
+    width: 63%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.title-catalog {
+    text-align: left;
+}
+
+.main-content {
+    flex: 1;
+}

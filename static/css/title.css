@@ -1,0 +1,48 @@
+body{
+    background-color: #eaeaea;
+   } 
+.title{
+    color: #000000;
+    font-size: 18px;
+    font-weight: 400;
+}
+.description{
+    color: #484343;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+.list{
+    color:#382e80; 
+    font-weight: 300;
+    line-height: 16px;
+    font-size: 17px;    
+}
+.myform {
+    width: 241px;
+    height: 23px;
+    color:#A52A2A; 
+    font-weight: 300;
+    line-height: 16px;
+    font-size: 17px
+}
+
+.my-email:focus {
+    color: green;
+    background-color: aquamarine;
+}
+
+.message {
+    width: 262px;
+    height: 100px;
+
+}
+
+input, textarea {
+    text-transform: capitalize;
+}
+
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
