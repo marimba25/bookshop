@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^catalog/', mainapp.catalog),
     url(r'^contacts/', mainapp.contacts),
     url(r'^admin/', admin.site.urls),
+    url(r'^amclassic/', mainapp.amclassic),
+    url(r'^rusclassic/', mainapp.rusclassic),
 ]
