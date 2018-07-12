@@ -19,10 +19,16 @@ from django.conf.urls import url
 import mainapp.views as mainapp
 
 urlpatterns = [
-    url(r'^$', mainapp.main),
-    url(r'^catalog/', mainapp.catalog),
-    url(r'^contacts/', mainapp.contacts),
+    url(r'^$', mainapp.main, name='main'),
+    url(r'^catalog/', mainapp.catalog, name='catalog'),
+    url(r'^contacts/', mainapp.contacts, name='contacts'),
     url(r'^admin/', admin.site.urls),
     url(r'^amclassic/', mainapp.amclassic),
     url(r'^rusclassic/', mainapp.rusclassic),
+    url(r'^capitan/', mainapp.capitan),
+    url(r'^kill', mainapp.kill),
+    url(r'^mice', mainapp.mice),
+    url(r'^nadprop', mainapp.nadprop),
+    url(r'^prest_nakaz', mainapp.prest_nakaz),
+    url(r'^voina_i_mir', mainapp.voina_i_mir)
 ]

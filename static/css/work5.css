@@ -158,10 +158,10 @@ li {
     height: 100px;
 }
 
-input,
+/* input,
 textarea {
     text-transform: capitalize;
-}
+} */
 
 .footer-item {
     flex-direction: column;
