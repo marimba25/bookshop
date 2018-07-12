@@ -1,8 +1,10 @@
-body {
+.body {
     background-color: #f8f8f8;
     margin: 0;
     height: 100%;
 }
+
+
 
 .menu {
     margin-top: 0;
@@ -51,7 +53,9 @@ li {
 .logo-link {
     margin-left: 0px;
     text-decoration: none;
+
 }
+
 
 .logo {
     height: 60px;
@@ -267,4 +271,11 @@ textarea {
 
 .main-content {
     flex: 1;
+}
+
+@font-face {
+    font-family: 'Anastasia Regular;
+    src: url('/fonts/ Anastasia Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
 }
