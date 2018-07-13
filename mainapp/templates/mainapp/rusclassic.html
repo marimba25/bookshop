@@ -53,70 +53,10 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">
-                <div class="footer-bottom">
-                    <div class="footer-item">
-                        <ul class="footer-copy">
-                            <li>&copy;Все права защищены</li>
-                        </ul>
-                    </div>
-                    <script type="text/javascript">
-                    (function() {
-                        if (window.pluso)
-                            if (typeof window.pluso.start == "function") return;
-                        if (window.ifpluso == undefined) {
-                            window.ifpluso = 1;
-                            var d = document,
-                                s = d.createElement('script'),
-                                g = 'getElementsByTagName';
-                            s.type = 'text/javascript';
-                            s.charset = 'UTF-8';
-                            s.async = true;
-                            s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://share.pluso.ru/pluso-like.js';
-                            var h = d[g]('body')[0];
-                            h.appendChild(s);
-                        }
-                    })();
-
-                    </script>
-                    <div class="pluso footer-item" data-background="transparent"
-                         data-options="small,square,line,horizontal,nocounter,theme=06"
-                         data-services="vkontakte,odnoklassniki,facebook,pinterest"></div>
-                    <div class="footer-item"></div>
-                </div>
-
-                <div class="footer-top">
-                    <div class="footer-item">
-                        Свяжитесь с нами
-                        <ul class="footer-list">
-                            <li>+7(812)3325566</li>
-                            <li>Санкт-Петербург, Лиговский проспект, дом 116</li>
-                            <li><a href="mailto:superbooks@gmail.com">superbooks@gmail.com</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-item">
-                        Полезная информация
-                        <ul class="footer-list">
-                            <li>
-                                <a href="index.html">Отдел продаж</a>
-                            </li>
-                            <li>
-                                <a href="index.html">Поддержка клиентов</a>
-                            </li>
-                            <li>
-                                <a href="index.html">Доставка</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-item">
-                        <ul class="footer-list">
-                            <li>Карьера у нас</li>
-                            <li>Обмен и возврат</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            {% include "mainapp/includes/inc_footer.html" %}
         </div>
+    </div>
+</div>
 </body>
 
 </html>
