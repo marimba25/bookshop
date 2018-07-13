@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^mice', mainapp.mice),
     url(r'^nadprop', mainapp.nadprop),
     url(r'^prest_nakaz', mainapp.prest_nakaz),
-    url(r'^voina_i_mir', mainapp.voina_i_mir)
+    url(r'^voyna_i_mir', mainapp.voina_i_mir)
 ]

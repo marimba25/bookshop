@@ -43,4 +43,4 @@ def prest_nakaz(request):
 
 
 def voina_i_mir(request):
-    return render(request, 'mainapp/voina_i_mir.html')
+    return render(request, 'mainapp/voyna_i_mir.html')
