@@ -20,7 +20,7 @@
             Книжная классика
         </div>
         <div>
-           {% include "mainapp/includes/inc_menu.html" %}
+            {% include "mainapp/includes/inc_menu.html" %}
         </div>
     </div>
     <div class="main-content">
@@ -31,59 +31,22 @@
             <li><a href="/amclassic">Американская классика</a></li>
         </ul>
         <div class="common-book">
-                <div class="row">
-                    <div class="col-xl-3 col-md-4 col-sm-6">
-                        <div class="book-item">
-                            <a href="/capitan" class="book-link"><img class="book-img"
-                                                                          src="/static/img/cap.jpg"></a>
-                            <h2 class="book-title">Александр Пушкин<br> "Капитанская дочка"</h2>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-4 col-sm-6">
-                        <div class="book-item">
-                            <a href="/mice" class="book-link"><img class="book-img" src="/static/img/mice.jpeg"></a>
-                            <h2 class="book-title">Джон Стейнбек<br>"О мышах и людях"</h2>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-4 col-sm-6">
-                        <div class="book-item">
-                            <a href="/nadprop" class="book-link"><img class="book-img"
-                                                                          src="/static/img/nadprop.jpg"></a>
-                            <h2 class="book-title">Джером Д.Сэлинджер<br>"Над пропастью во ржи"</h2>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-4 col-sm-6">
-                        <div class="book-block">
-                            <div class="book-item">
-                                <a href="/prest_nakaz" class="book-link"><img class="book-img"
-                                                                                  src="/static/img/nakaz.jpg"></a>
-                                <h2 class="book-title">Фёдор Достоевский<br>"Преступление и наказание"</h2>
-                            </div>
-                        </div>
-
+            {% for row in rows_of_products %}
+            <div class="row">
+                {% for product in row %}
+                <div class="col-xl-3 col-md-4 col-sm-6">
+                    <div class="book-item">
+                        <a href="/capitan" class="book-link"><img class="book-img"
+                                                                  src="/static/img/book.png"></a>
+                        <h2 class="book-title">{{ product.author }}<br>{{ product.title }}</h2>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-xl-3 col-md-4 col-sm-6">
-                        <div class="book-item">
-                            <a href="/voyna i mir" class="book-link"><img class="book-img"
-                                                                              src="/static/img/2-2.jpg"></a>
-                            <h2 class="book-title">Лев Толстой<br>"Война и мир"</h2>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-4 col-sm-6">
-                        <div class="book-item">
-                            <a href="/kill" class="book-link"><img class="book-img"
-                                                                       src="/static/img/kill.jpeg"></a>
-                            <h2 class="book-title">Харпер Ли<br>"Убить пересмешника"</h2>
-                        </div>
-                    </div>
-                </div>
-                {% include "mainapp/includes/inc_footer.html" %}
+                {% endfor %}
+            </div>
+            {% endfor %}
         </div>
+        {% include "mainapp/includes/inc_footer.html" %}
     </div>
-</div>
-</div>
 </div>
 </div>
 </body>

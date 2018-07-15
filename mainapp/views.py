@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Book, Author, Country
 
 
 # Create your views here.
@@ -8,7 +9,18 @@ def main(request):
 
 
 def catalog(request):
-    return render(request, 'mainapp/catalog.html')
+
+    def chunk_data(data, chunk_size):
+        for i in range(0, len(data), chunk_size):
+            yield data[i:i + chunk_size]
+
+    title = 'Каталог'
+    products = Book.objects.all()
+    rows_of_products = chunk_data(products, 4)
+
+    content = {'title': title, 'rows_of_products': rows_of_products}
+
+    return render(request, 'mainapp/catalog.html', content)
 
 
 def contacts(request):
@@ -42,5 +54,5 @@ def prest_nakaz(request):
     return render(request, 'mainapp/prest_nakaz.html')
 
 
-def voina_i_mir(request):
+def voyna_i_mir(request):
     return render(request, 'mainapp/voyna_i_mir.html')
