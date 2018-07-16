@@ -16,9 +16,11 @@ def catalog(request):
 
     title = 'Каталог'
     products = Book.objects.all()
+    categories = BookCategory.objects.all()
+
     rows_of_products = chunk_data(products, 4)
 
-    content = {'title': title, 'rows_of_products': rows_of_products}
+    content = {'title': title, 'rows_of_products': rows_of_products, 'categories': categories}
 
     return render(request, 'mainapp/catalog.html', content)
 

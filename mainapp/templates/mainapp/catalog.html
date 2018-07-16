@@ -27,8 +27,9 @@
         <h1 class="title-catalog">Что у нас можно купить</h1>
         <ul class="catalog-menu">
             <li><a href="/catalog">Все книги</a></li>
-            <li><a href="/rusclassic">Русская классика</a></li>
-            <li><a href="/amclassic">Американская классика</a></li>
+            {% for category in categories %}
+            <li><a href="TODO">{{ category }}</a></li>
+            {% endfor %}
         </ul>
         <div class="common-book">
             {% for row in rows_of_products %}
