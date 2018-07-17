@@ -19,9 +19,7 @@ class Book(models.Model):
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
     price = models.PositiveIntegerField(verbose_name='Стоимость товара', null=True)
     counts_of_sheets = models.PositiveIntegerField(verbose_name='Количество страниц')
-    cover = models.ImageField(upload_to='bookshop/media',
-                              null=True,
-                              blank=True)
+    cover = models.ImageField(upload_to='bookshop/media')
 
     def __str__(self):
         return self.title
