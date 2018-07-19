@@ -26,9 +26,9 @@
     <div class="main-content">
         <h1 class="title-catalog">Что у нас можно купить</h1>
         <ul class="catalog-menu">
-            <li><a href="/catalog">Все книги</a></li>
+            <li><a href="{% url 'catalog' %}">Все книги</a></li>
             {% for category in categories %}
-            <li><a href="/amclassic">{{ category }}</a></li>
+            <li><a href="{% url 'catalog-list' category.id %}">{{ category }}</a></li>
             {% endfor %}
         </ul>
         <div class="common-book">

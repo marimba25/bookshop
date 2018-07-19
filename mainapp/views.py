@@ -15,9 +15,9 @@ def chunk_data(data, chunk_size):
 
 
 def catalog(request, pk=None):
-    print(pk)
     context = {}
     context['categories'] = BookCategory.objects.all()
+    print(context)
 
     if pk is None:
         products = Book.objects.all()
@@ -34,34 +34,3 @@ def catalog(request, pk=None):
 def contacts(request):
     return render(request, 'mainapp/contacts.html')
 
-
-def amclassic(request):
-    return render(request, 'mainapp/amclassic.html')
-
-
-def rusclassic(request):
-    return render(request, 'mainapp/rusclassic.html')
-
-
-def capitan(request):
-    return render(request, 'mainapp/capitan.html')
-
-
-def kill(request):
-    return render(request, 'mainapp/kill.html')
-
-
-def mice(request):
-    return render(request, 'mainapp/mice.html')
-
-
-def nadprop(request):
-    return render(request, 'mainapp/nadprop.html')
-
-
-def prest_nakaz(request):
-    return render(request, 'mainapp/prest_nakaz.html')
-
-
-def voyna_i_mir(request):
-    return render(request, 'mainapp/voyna_i_mir.html')
