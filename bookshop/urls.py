@@ -18,7 +18,7 @@ from django.conf.urls import url
 import mainapp.views as mainapp
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import path, include
 
 urlpatterns = [
     url(r'^$', mainapp.main, name='main'),
@@ -26,6 +26,7 @@ urlpatterns = [
     path('catalog/', mainapp.catalog, name='catalog'),
     url(r'^contacts/', mainapp.contacts, name='contacts'),
     url(r'^admin/', admin.site.urls),
+    url(r'^auth/', include('authapp.urls', namespace='auth')),
 ]
 
 
