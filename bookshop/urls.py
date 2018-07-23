@@ -25,8 +25,8 @@ urlpatterns = [
     path('catalog/<int:pk>', mainapp.catalog, name='catalog-list'),
     path('catalog/', mainapp.catalog, name='catalog'),
     url(r'^contacts/', mainapp.contacts, name='contacts'),
-    url(r'^admin/', admin.site.urls),
     url(r'^auth/', include('authapp.urls', namespace='auth')),
+    url(r'^admin/', admin.site.urls),
 ]
 
 

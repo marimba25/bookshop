@@ -2,6 +2,6 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import BookUser
+from .models import ShopUser
 
-admin.site.register(BookUser)
+admin.site.register(ShopUser)
