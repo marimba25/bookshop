@@ -35,9 +35,9 @@
                 <div class="productinfo">
                     <div>
 
-                        <a href="/static/img/cap.jpg" target="_blank">
+
                             <img src="{{ book.cover.url }}" height="200">
-                        </a>
+
                     </div>
                     <div>
                         <h2 class="title">{{ book.author }} "{{ book.title }}"</h2>
@@ -47,12 +47,15 @@
                         <button type="button" class="book-buy">Купить</button>
                         <p class="description">{{ book.description }}<br> Количество страниц - {{ book.counts_of_sheets }}
                             {% if book.format %}
-                            , Формат {{ book.format.height }}*{{ book.format.width }} мм</p>
+                            Формат {{ book.format.height }}*{{ book.format.width }} мм</p>
                             {% endif %}
                     </div>
                 </div>
                 {% include "mainapp/includes/inc_footer.html" %}
             </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
