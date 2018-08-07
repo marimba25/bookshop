@@ -23,6 +23,7 @@ from django.urls import path, include
 urlpatterns = [
     url(r'^$', mainapp.main, name='main'),
     path('catalog/<int:pk>', mainapp.catalog, name='catalog-list'),
+    path('book/<int:pk>', mainapp.book, name='book'),
     path('catalog/', mainapp.catalog, name='catalog'),
     url(r'^contacts/', mainapp.contacts, name='contacts'),
     url(r'^auth/', include('authapp.urls', namespace='auth')),
