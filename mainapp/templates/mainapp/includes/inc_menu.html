@@ -1,13 +1,17 @@
 <div>
-                <ul class="menu">
-                    <li class="menu-link">
-                        <a href="{% url 'main' %}">Главная</a>
-                    </li>
-                    <li class="menu-link">
-                        <a href="{% url 'catalog' %}">Каталог</a>
-                    </li>
-                    <li class="menu-link">
-                        <a href="{% url 'contacts' %}">Контакты</a>
-                    </li>
-                </ul>
-            </div>
+    <ul class="menu">
+        <li class="menu-link">
+            <a href="{% url 'main' %}">Главная</a>
+        </li>
+        <li class="menu-link">
+            <a href="{% url 'catalog' %}">Каталог</a>
+        </li>
+        <li class="menu-link">
+            <a href="{% url 'contacts' %}">Контакты</a>
+        </li>
+        <li><a href="{% url 'basket:view' %}" class="basket">
+            {% if basket %} В корзине {{ basket|length }}{% endif %}
+        </a>
+        </li>
+    </ul>
+</div>

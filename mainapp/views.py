@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+
+from basketapp.models import Basket
 from .models import Book, Author, Country, BookCategory
 from . import models
 
@@ -14,9 +16,19 @@ def chunk_data(data, chunk_size):
         yield data[i:i + chunk_size]
 
 
+def get_basket_context(request):
+    basket = []
+
+    if request.user.is_authenticated:
+        basket = Basket.objects.filter(user=request.user)
+
+    return {'basket': basket}
+
+
 def catalog(request, pk=None):
     context = {}
     context['categories'] = BookCategory.objects.all()
+    context.update(get_basket_context(request))
 
     if pk is None:
         products = Book.objects.all()
@@ -40,4 +52,3 @@ def book(request, pk=None):
 
 def contacts(request):
     return render(request, 'mainapp/contacts.html')
-
