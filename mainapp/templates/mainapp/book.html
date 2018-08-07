@@ -34,17 +34,19 @@
 
                 <div class="productinfo">
                     <div>
-                        <a href="{% url 'basket:add' book.pk %}">
+
 
                             <img src="{{ book.cover.url }}" height="200">
-                        </a>
                     </div>
                     <div>
                         <h2 class="title">{{ book.author }} "{{ book.title }}"</h2>
                         <div class="price">
                             {{ book.price }} руб.
                         </div>
-                        <button type="button" class="book-buy">Купить</button>
+                        <a href="{% url 'basket:add' book.pk %}">
+                        <button type="button" class="book-buy">Купить
+                        </button>
+                        </a>
                         <p class="description">{{ book.description }}<br> Количество страниц - {{ book.counts_of_sheets }}
                             {% if book.format %}
                             Формат {{ book.format.height }}*{{ book.format.width }} мм</p>
