@@ -17,7 +17,6 @@ def chunk_data(data, chunk_size):
 def catalog(request, pk=None):
     context = {}
     context['categories'] = BookCategory.objects.all()
-    print(context)
 
     if pk is None:
         products = Book.objects.all()
@@ -28,6 +27,14 @@ def catalog(request, pk=None):
     rows_of_products = chunk_data(products, 4)
     context['rows_of_products'] = rows_of_products
     template = 'mainapp/catalog.html'
+    return render(request, template, context)
+
+
+def book(request, pk=None):
+    context = {}
+    book_obj = get_object_or_404(models.Book, pk=pk)
+    context['book'] = book_obj
+    template = 'mainapp/book.html'
     return render(request, template, context)
 
 

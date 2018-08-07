@@ -37,7 +37,7 @@
                 {% for product in row %}
                 <div class="col-xl-3 col-md-4 col-sm-6">
                     <div class="book-item">
-                        <a href="/capitan" class="book-link"><img class="book-img"
+                        <a href="{% url 'book' product.id %}" class="book-link"><img class="book-img"
                                                                   src="{{ product.cover.url }}"></a>
                         <h2 class="book-title">{{ product.author }}<br>{{ product.title }}</h2>
                     </div>

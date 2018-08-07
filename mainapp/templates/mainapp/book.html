@@ -25,26 +25,30 @@
         </div>
         <div class="main-content">
             <ul class="catalog-menu">
-                <li><a href="/catalog">Все книги</a></li>
-                <li><a href="/rusclassic">Русская классика</a></li>
-                <li><a href="/amclassic">Американская классика</a></li>
-            </ul>
+            <li><a href="{% url 'catalog' %}">Все книги</a></li>
+            {% for category in categories %}
+            <li><a href="{% url 'catalog-list' category.id %}">{{ category }}</a></li>
+            {% endfor %}
+        </ul>
             <div>
 
                 <div class="productinfo">
                     <div>
 
                         <a href="/static/img/cap.jpg" target="_blank">
-                            <img src="/static/img/cap.jpg" height="200">
+                            <img src="{{ book.cover.url }}" height="200">
                         </a>
                     </div>
                     <div>
-                        <h2 class="title">Александр Пушкин "Капитанская дочка"</h2>
+                        <h2 class="title">{{ book.author }} "{{ book.title }}"</h2>
                         <div class="price">
-                            120 руб.
+                            {{ book.price }} руб.
                         </div>
                         <button type="button" class="book-buy">Купить</button>
-                        <p class="description">Исторический роман Александра Пушкина, действие которого происходит во время восстания Емельяна Пугачёва.<br> Количество страниц - 448, Формат 207*136 мм</p>
+                        <p class="description">{{ book.description }}<br> Количество страниц - {{ book.counts_of_sheets }}
+                            {% if book.format %}
+                            , Формат {{ book.format.height }}*{{ book.format.width }} мм</p>
+                            {% endif %}
                     </div>
                 </div>
                 {% include "mainapp/includes/inc_footer.html" %}

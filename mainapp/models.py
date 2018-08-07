@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -16,6 +17,8 @@ class Book(models.Model):
     title = models.CharField(max_length=255,
                              default='Книга',
                              verbose_name='Наименование произведения')
+    description = models.TextField(verbose_name='О чем книга', default='')
+    format = models.ForeignKey('Format', verbose_name='Формат книги', on_delete=models.CASCADE, null=True)
     author = models.ForeignKey('Author', on_delete=models.CASCADE)
     price = models.PositiveIntegerField(verbose_name='Стоимость товара', null=True)
     counts_of_sheets = models.PositiveIntegerField(verbose_name='Количество страниц')
@@ -38,3 +41,11 @@ class Country(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Format(models.Model):
+    height = models.PositiveIntegerField(verbose_name='Высота')
+    width = models.PositiveIntegerField(verbose_name='Ширина')
+
+    def __str__(self):
+        return '{0}*{1}'.format(self.width, self.height)
