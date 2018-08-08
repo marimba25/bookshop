@@ -7,15 +7,6 @@ from . import models
 
 # Create your views here.
 
-def main(request):
-    return render(request, 'mainapp/index.html', {"username": "marina"})
-
-
-def chunk_data(data, chunk_size):
-    for i in range(0, len(data), chunk_size):
-        yield data[i:i + chunk_size]
-
-
 def get_basket_context(request):
     basket = []
 
@@ -23,6 +14,18 @@ def get_basket_context(request):
         basket = Basket.objects.filter(user=request.user)
 
     return {'basket': basket}
+
+
+def main(request):
+    context = {}
+    context['books'] = Basket.objects.all()
+    context.update(get_basket_context(request))
+    return render(request, 'mainapp/index.html', context)
+
+
+def chunk_data(data, chunk_size):
+    for i in range(0, len(data), chunk_size):
+        yield data[i:i + chunk_size]
 
 
 def catalog(request, pk=None):
@@ -46,9 +49,13 @@ def book(request, pk=None):
     context = {}
     book_obj = get_object_or_404(models.Book, pk=pk)
     context['book'] = book_obj
+    context.update(get_basket_context(request))
     template = 'mainapp/book.html'
     return render(request, template, context)
 
 
 def contacts(request):
-    return render(request, 'mainapp/contacts.html')
+    context = {}
+    context['books'] = Basket.objects.all()
+    context.update(get_basket_context(request))
+    return render(request, 'mainapp/contacts.html', context)
