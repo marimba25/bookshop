@@ -8,18 +8,18 @@ import random
 
 # Create your views here.
 
-def get_basket(request):
+def get_basket(user):
     basket = []
 
-    if request.user.is_authenticated:
-        basket = Basket.objects.filter(user=request.user)
+    if user.is_authenticated:
+        basket = Basket.objects.filter(user=user)
 
     return basket
 
 
 def main(request):
     books = Book.objects.all()
-    basket = get_basket(request)
+    basket = get_basket(request.user)
     context = {'books': books, 'basket': basket}
     return render(request, 'mainapp/index.html', context)
 
@@ -31,7 +31,7 @@ def chunk_data(data, chunk_size):
 
 def catalog(request, pk=None):
     categories = BookCategory.objects.all()
-    basket = get_basket(request)
+    basket = get_basket(request.user)
     context = {'categories': categories, 'basket': basket}
 
     if pk is None:
@@ -48,7 +48,7 @@ def catalog(request, pk=None):
 
 def book(request, pk=None):
     book_obj = get_object_or_404(models.Book, pk=pk)
-    basket = get_basket(request)
+    basket = get_basket(request.user)
     template = 'mainapp/book.html'
     context = {'book': book_obj, 'basket': basket}
     return render(request, template, context)
@@ -56,7 +56,7 @@ def book(request, pk=None):
 
 def contacts(request):
     books = Book.objects.all()
-    basket = get_basket(request)
+    basket = get_basket(request.user)
     context = {'books': books, 'basket': basket}
     return render(request, 'mainapp/contacts.html', context)
 
