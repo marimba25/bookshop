@@ -32,7 +32,6 @@ def chunk_data(data, chunk_size):
 def catalog(request, pk=None):
     categories = BookCategory.objects.all()
     basket = get_basket(request.user)
-    context = {'categories': categories, 'basket': basket}
 
     if pk is None:
         products = Book.objects.all()
@@ -41,8 +40,16 @@ def catalog(request, pk=None):
         products = Book.objects.filter(category=category_object)
 
     rows_of_products = chunk_data(products, 4)
-    context['rows_of_products'] = rows_of_products
+
+    hot_product = get_hot_product()
+    same_products = get_same_products(hot_product)
     template = 'mainapp/catalog.html'
+    context = {'categories': categories,
+               'basket': basket,
+               'rows_of_products': rows_of_products,
+               'hot_product': hot_product,
+               'same_products': same_products,}
+
     return render(request, template, context)
 
 
@@ -67,6 +74,5 @@ def get_hot_product():
 
 
 def get_same_products(hot_product):
-    same_products = Book.objects.filter(category=hot_product.category). \
-                        exclude(pk=hot_product.pk)[:3]
+    same_products = Book.objects.filter(category=hot_product.category).exclude(pk=hot_product.pk)[:3]
     return same_products
