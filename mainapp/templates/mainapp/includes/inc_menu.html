@@ -10,7 +10,7 @@
             <a href="{% url 'contacts' %}">Контакты</a>
         </li>
         <li><a href="{% url 'basket:view' %}" class="basket">
-            {% if basket %}В корзине: {{ basket.0.total_quantity }} шт{% endif %} на стоимость {{ basket.0.total_cost }} руб.
+            {% if basket %}В корзине: {{ basket.0.total_quantity }} шт{% endif %} на стоимость {{ basket.0.total_cost|floatformat:0 }} руб.
         </a>
         </li>
     </ul>

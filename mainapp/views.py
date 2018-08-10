@@ -3,23 +3,24 @@ from django.shortcuts import render, get_object_or_404
 from basketapp.models import Basket
 from .models import Book, Author, Country, BookCategory
 from . import models
+import random
 
 
 # Create your views here.
 
-def get_basket_context(request):
+def get_basket(request):
     basket = []
 
     if request.user.is_authenticated:
         basket = Basket.objects.filter(user=request.user)
 
-    return {'basket': basket}
+    return basket
 
 
 def main(request):
-    context = {}
-    context['books'] = Basket.objects.all()
-    context.update(get_basket_context(request))
+    books = Book.objects.all()
+    basket = get_basket(request)
+    context = {'books': books, 'basket': basket}
     return render(request, 'mainapp/index.html', context)
 
 
@@ -29,9 +30,9 @@ def chunk_data(data, chunk_size):
 
 
 def catalog(request, pk=None):
-    context = {}
-    context['categories'] = BookCategory.objects.all()
-    context.update(get_basket_context(request))
+    categories = BookCategory.objects.all()
+    basket = get_basket(request)
+    context = {'categories': categories, 'basket': basket}
 
     if pk is None:
         products = Book.objects.all()
@@ -46,16 +47,26 @@ def catalog(request, pk=None):
 
 
 def book(request, pk=None):
-    context = {}
     book_obj = get_object_or_404(models.Book, pk=pk)
-    context['book'] = book_obj
-    context.update(get_basket_context(request))
+    basket = get_basket(request)
     template = 'mainapp/book.html'
+    context = {'book': book_obj, 'basket': basket}
     return render(request, template, context)
 
 
 def contacts(request):
-    context = {}
-    context['books'] = Basket.objects.all()
-    context.update(get_basket_context(request))
+    books = Book.objects.all()
+    basket = get_basket(request)
+    context = {'books': books, 'basket': basket}
     return render(request, 'mainapp/contacts.html', context)
+
+
+def get_hot_product():
+    products = Book.objects.all()
+    return random.sample(list(products), 1)[0]
+
+
+def get_same_products(hot_product):
+    same_products = Book.objects.filter(category=hot_product.category). \
+                        exclude(pk=hot_product.pk)[:3]
+    return same_products

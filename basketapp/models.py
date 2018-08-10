@@ -12,22 +12,22 @@ class Basket(models.Model):
     def __str__(self):
         return str(self.product)
 
-    def _get_product_cost(self):
+    def get_product_cost(self):
         return self.product.price * self.quantity
 
-    product_cost = property(_get_product_cost)
+    product_cost = property(get_product_cost)
 
-    def _get_total_quantity(self):
-        _items = Basket.objects.filter(user=self.user)
-        _totalquantity = sum(list(map(lambda x: x.quantity, _items)))
-        return _totalquantity
+    def get_total_quantity(self):
+        items = Basket.objects.filter(user=self.user)
+        totalquantity = sum(list(map(lambda x: x.quantity, items)))
+        return totalquantity
 
-    total_quantity = property(_get_total_quantity)
+    total_quantity = property(get_total_quantity)
 
-    def _get_total_cost(self):
-        _items = Basket.objects.filter(user=self.user)
-        _totalcost = sum(list(map(lambda x: x.product_cost, _items)))
-        return _totalcost
+    def get_total_cost(self):
+        items = Basket.objects.filter(user=self.user)
+        totalcost = sum(list(map(lambda x: x.product_cost, items)))
+        return totalcost
 
-    total_cost = property(_get_total_cost)
+    total_cost = property(get_total_cost)
 
