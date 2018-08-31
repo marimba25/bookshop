@@ -4,28 +4,31 @@
 <div class="categories_list">
     <button class="new_category">
         <a href="{% url 'adminka:category_create' %}">
-        новая категория
+            новая категория
         </a>
     </button>
     {% for object in objects %}
-    <div class="category_record">
+    <div class="category_record
+{% if not object.is_active %}
+not_active
+{% endif %}">
         <div class="category_name">
             {{ object.name|title }}
         </div>
         <div class="category_actions">
             <button>
                 <a href="{% url 'adminka:products' object.pk %}">
-                товары категории
+                    товары категории
                 </a>
             </button>
             <button>
                 <a href="{% url 'adminka:category_update' object.pk %}">
-                редактировать
+                    редактировать
                 </a>
             </button>
             <button>
                 <a href="{% url 'adminka:category_delete' object.pk %}">
-                удалить
+                    удалить
                 </a>
             </button>
         </div>
