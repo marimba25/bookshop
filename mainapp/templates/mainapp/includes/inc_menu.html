@@ -1,4 +1,6 @@
-<div>
+
+
+    <div>
     <ul class="menu">
         {% if user.is_authenticated %}
         <li>
@@ -19,21 +21,30 @@
             <a href="{% url 'auth:login' %}">войти</a>
             {% endif %}
         </li>
-        <li class="menu-link">
+    </ul>
+    </div>
+
+
+        <div>
+            <ul class="menu">
+        <li>
             <a href="{% url 'main' %}">Главная</a>
         </li>
-        <li class="menu-link">
+        <li>
             <a href="{% url 'catalog' %}">Каталог</a>
         </li>
-        <li class="menu-link">
+        <li>
             <a href="{% url 'contacts' %}">Контакты</a>
         </li>
+        </ul>
+        </div>
+
     </ul>
-</div>
+
 <div>
     <ul class="menu">
         <li><a href="{% url 'basket:view' %}" class="basket">
-            {% if basket %}В корзине: {{ basket.0.total_quantity }} шт{% endif %} на стоимость {{basket.0.total_cost|floatformat:0 }} руб.
+            В корзине: {{ basket.0.total_quantity }} шт на стоимость {{basket.0.total_cost|floatformat:0 }} руб.
         </a>
         </li>
     </ul>

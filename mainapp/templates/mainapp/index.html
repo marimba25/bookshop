@@ -22,7 +22,7 @@
             {% include "mainapp/includes/inc_menu.html" %}
         </div>
         <hr>
-        <h1>Привет{{ username | title }}</h1>
+        <h2>Приветствуем, {{ username | default_if_none:"%юзернейм%" | title }}</h2>
         <div class="main-content">
             <p>Покупайте лучшие книги по лучшей цене</p>
         </div>

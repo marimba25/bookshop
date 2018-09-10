@@ -20,7 +20,12 @@ def get_basket(user):
 def main(request):
     books = Book.objects.all()
     basket = get_basket(request.user)
-    context = {'books': books, 'basket': basket}
+    if request.user.is_authenticated:
+        username = request.user.first_name
+        print(username, '545')
+    else:
+        username = None
+    context = {'books': books, 'basket': basket, 'username': username}
     return render(request, 'mainapp/index.html', context)
 
 
