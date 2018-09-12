@@ -18,17 +18,17 @@ from django.conf.urls import url
 import mainapp.views as mainapp
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 urlpatterns = [
     url(r'^$', mainapp.main, name='main'),
     path('catalog/<int:pk>', mainapp.catalog, name='catalog-list'),
     path('book/<int:pk>', mainapp.book, name='book'),
     path('catalog/', mainapp.catalog, name='catalog'),
-    url(r'^contacts/', mainapp.contacts, name='contacts'),
-    url(r'^auth/', include('authapp.urls', namespace='auth')),
-    url(r'^basket/', include(('basketapp.urls', 'basketapp'), namespace='basket')),
-    url(r'^adminka/', include(('adminapp.urls', 'adminapp'), namespace='adminka')),
+    re_path(r'^contacts/', mainapp.contacts, name='contacts'),
+    re_path(r'^auth/', include('authapp.urls', namespace='auth')),
+    re_path(r'^basket/', include(('basketapp.urls', 'basketapp'), namespace='basket')),
+    re_path(r'^adminka/', include(('adminapp.urls', 'adminapp'), namespace='adminka')),
     url(r'^admin/', admin.site.urls),
 ]
 
