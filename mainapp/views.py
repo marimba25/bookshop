@@ -25,7 +25,7 @@ def main(request):
         print(username, '545')
     else:
         username = None
-    context = {'books': books, 'basket': basket, 'username': username}
+    context = {'books': books, 'username': username}
     return render(request, 'mainapp/index.html', context)
 
 
@@ -50,7 +50,6 @@ def catalog(request, pk=None):
     same_products = get_same_products(hot_product)
     template = 'mainapp/catalog.html'
     context = {'categories': categories,
-               'basket': basket,
                'rows_of_products': rows_of_products,
                'hot_product': hot_product,
                'same_products': same_products,}
@@ -62,14 +61,14 @@ def book(request, pk=None):
     book_obj = get_object_or_404(models.Book, pk=pk)
     basket = get_basket(request.user)
     template = 'mainapp/book.html'
-    context = {'book': book_obj, 'basket': basket}
+    context = {'book': book_obj}
     return render(request, template, context)
 
 
 def contacts(request):
     books = Book.objects.all()
     basket = get_basket(request.user)
-    context = {'books': books, 'basket': basket}
+    context = {'books': books}
     return render(request, 'mainapp/contacts.html', context)
 
 
