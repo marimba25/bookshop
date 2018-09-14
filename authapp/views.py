@@ -1,10 +1,13 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+
+from . import models
 from .forms import ShopUserLoginForm, ShopUserRegisterForm
 from django.contrib import auth
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.conf import settings
-from authapp.models import ShopUser
+from .models import ShopUser
+
 
 from .forms import ShopUserEditForm
 
@@ -88,20 +91,15 @@ def send_verify_mail(user):
 
 
 def verify(request, email, activation_key):
-    try:
-        user = ShopUser.objects.get(email=email)
-        if user.activation_key == activation_key and not user.is_activation_key_expired():
-            print(f'user {user} is activated')
-            user.is_active = True
-            user.save()
-            auth.login(request, user)
+    user = get_object_or_404(models.ShopUser, email=email)
+    if user.activation_key == activation_key and not user.is_activation_key_expired():
+        print(f'user {user} is activated')
+        user.is_active = True
+        user.save()
+        auth.login(request, user)
 
-            return render(request, 'authapp/verification.html')
-        else:
-            print(f'error activation user: {user}')
-            return render(request, 'authapp/verification.html')
+        return render(request, 'authapp/verification.html')
+    else:
+        print(f'error activation user: {user}')
+        return render(request, 'authapp/verification.html')
 
-    except Exception as e:
-        print(f'error activation user : {e.args}')
-
-    return HttpResponseRedirect(reverse('main'))
