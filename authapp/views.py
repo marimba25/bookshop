@@ -6,8 +6,8 @@ from django.contrib import auth
 from django.urls import reverse
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db import transaction
 from .models import ShopUser
-
 
 from .forms import ShopUserEditForm
 
@@ -96,7 +96,7 @@ def verify(request, email, activation_key):
         print(f'user {user} is activated')
         user.is_active = True
         user.save()
-        auth.login(request, user)
+        auth.login(request, user, backend='django.contrib.auth.backends.ModelBackend')
 
         return render(request, 'authapp/verification.html')
     else:
