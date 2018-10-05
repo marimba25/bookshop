@@ -1,13 +1,9 @@
-from datetime import timedelta
-
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.utils.timezone import now
-
-from .models import ShopUser
-import random
-import hashlib
+from .models import ShopUser, ShopUserProfile
 from django.contrib.auth.forms import UserChangeForm
+
+import random, hashlib
 
 
 class ShopUserLoginForm(AuthenticationForm):
@@ -19,14 +15,12 @@ class ShopUserLoginForm(AuthenticationForm):
         super(ShopUserLoginForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-            field.widget.attrs['placeholder'] = field_name
 
 
 class ShopUserRegisterForm(UserCreationForm):
     class Meta:
         model = ShopUser
         fields = ('username', 'first_name', 'password1', 'password2', 'email', 'age', 'avatar')
-        # fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(ShopUserRegisterForm, self).__init__(*args, **kwargs)
@@ -37,7 +31,7 @@ class ShopUserRegisterForm(UserCreationForm):
     def clean_age(self):
         data = self.cleaned_data['age']
         if data < 18:
-            raise forms.ValidationError("Вам недостаточно лет")
+            raise forms.ValidationError("Вы слишком молоды!")
 
         return data
 
@@ -46,10 +40,9 @@ class ShopUserRegisterForm(UserCreationForm):
 
         user.is_active = False
         salt = hashlib.sha1(str(random.random()).encode('utf8')).hexdigest()[:6]
-        user.activation_key = hashlib.sha1((user.email +
-                                            salt).encode('utf8')).hexdigest()
-        user.activation_key_expires = now() + timedelta(hours=48)
+        user.activation_key = hashlib.sha1((user.email + salt).encode('utf8')).hexdigest()
         user.save()
+
         return user
 
 
@@ -62,7 +55,6 @@ class ShopUserEditForm(UserChangeForm):
         super(ShopUserEditForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-
             field.help_text = ''
             if field_name == 'password':
                 field.widget = forms.HiddenInput()
@@ -70,6 +62,17 @@ class ShopUserEditForm(UserChangeForm):
     def clean_age(self):
         data = self.cleaned_data['age']
         if data < 18:
-            raise forms.ValidationError("Вам недостаточно лет")
+            raise forms.ValidationError("Вы слишком молоды!")
 
         return data
+
+
+class ShopUserProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = ShopUserProfile
+        fields = ('tagline', 'aboutMe', 'gender')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'

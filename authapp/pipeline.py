@@ -32,3 +32,6 @@ def save_user_profile(backend, user, response, *args, **kwargs):
         user.save()
 
     return
+
+
+
