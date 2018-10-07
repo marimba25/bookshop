@@ -65,6 +65,7 @@ def register(request):
     return render(request, 'authapp/register.html', content)
 
 
+
 @transaction.atomic
 def edit(request):
     title = 'редактирование'
@@ -86,6 +87,7 @@ def edit(request):
         'edit_form': edit_form,
         'profile_form': profile_form
     }
+
     return render(request, 'authapp/edit.html', content)
 
 

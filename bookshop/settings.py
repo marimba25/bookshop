@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'a!mtdsnp(q^dlp*oe6hnj4(f0c0&_=0dfu@!acc77h!pb1_^a8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -75,6 +75,9 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_ERROR_URL = '/'
+
 
 WSGI_APPLICATION = 'bookshop.wsgi.application'
 
@@ -163,8 +166,6 @@ with open('bookshop/google+.json', 'r') as f:
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = GOOGLE_PLUS['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = GOOGLE_PLUS['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
 
-
-LOGIN_ERROR_URL = '/'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_IGNORE_DEFAULT_SCOPE = True
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
