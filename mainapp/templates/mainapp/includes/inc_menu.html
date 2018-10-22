@@ -34,11 +34,25 @@
             <a href="{% url 'catalog' %}">Каталог</a>
         </li>
         <li>
-            <a href="{% url 'contacts' %}">Контакты</a>
+            <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+       Контакты
+   </a>
         </li>
-        </ul>
-        </div>
-
+    {% if user.is_authenticated %}
+        <li>
+            <div class="dropdown">
+                <a class="dropdown-toggle" href="" data-toggle="dropdown">{{ user.first_name|default:'Пользователь' }}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'auth:edit' %}">профиль</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ordersapp:orders_list' %}">заказы</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    {% endif %}
     </ul>
 
 <div>
@@ -48,4 +62,5 @@
         </a>
         </li>
     </ul>
+</div>
 </div>
