@@ -24,9 +24,15 @@ class Book(models.Model):
     price = models.PositiveIntegerField(verbose_name='Стоимость товара', null=True)
     counts_of_sheets = models.PositiveIntegerField(verbose_name='Количество страниц')
     cover = models.ImageField(upload_to='bookshop/media')
+    quantity = models.PositiveIntegerField(verbose_name='количество на складе', default=0)
+    is_active = models.BooleanField(verbose_name='категория активна', default=True)
 
     def __str__(self):
         return self.title
+
+    @staticmethod
+    def get_items():
+        return Book.objects.filter(is_active=True).order_by('category', 'name')
 
 
 class Author(models.Model):

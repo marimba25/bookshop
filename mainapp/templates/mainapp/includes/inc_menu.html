@@ -40,17 +40,24 @@
         </li>
     {% if user.is_authenticated %}
         <li>
+
             <div class="dropdown">
-                <a class="dropdown-toggle" href="" data-toggle="dropdown">{{ user.first_name|default:'Пользователь' }}<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="{% url 'auth:edit' %}">профиль</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'ordersapp:orders_list' %}">заказы</a>
-                    </li>
-                </ul>
-            </div>
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    {{ user.first_name|default:'Пользователь' }}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li>
+          <a href="{% url 'auth:edit' %}">профиль</a>
+      </li>
+      <li>
+          <a href="{% url 'ordersapp:orders_list' %}">заказы</a>
+      </li>
+  </ul>
+</div>
+
+
+
         </li>
     {% endif %}
     </ul>

@@ -31,3 +31,10 @@ class Basket(models.Model):
 
     total_cost = property(get_total_cost)
 
+    @staticmethod
+    def get_items(user):
+        return user.basket_set.all()
+
+    @staticmethod
+    def get_item(pk):
+        return Basket.objects.filter(pk=pk).first()
