@@ -57,9 +57,14 @@ class OrderItemsCreate(CreateView):
                 basket_items.delete()
 
             else:
+                print('here 11111111111111111')
                 formset = OrderFormSet()
+                print('here 22222222222222222222222')
 
+        print(formset)
         data['orderitems'] = formset
+        print('here 33333333333333333333333')
+
         return data
 
     def form_valid(self, form):

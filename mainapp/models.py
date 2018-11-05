@@ -32,7 +32,8 @@ class Book(models.Model):
 
     @staticmethod
     def get_items():
-        return Book.objects.filter(is_active=True).order_by('category', 'name')
+        print('999999999999999999999999999')
+        return Book.objects.filter(is_active=True).order_by('category', 'title')
 
 
 class Author(models.Model):
