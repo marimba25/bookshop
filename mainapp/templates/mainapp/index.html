@@ -16,15 +16,12 @@
 
 <body>
     <div class="container">
-        <div class="header">
-            <div class="logo-mag">
-                <a class="logo-link" href="/">
-                    <img class="logo" src="static/img/1.png">
-                </a>
-                Книжная классика
-            </div>
+
+            <div class="page-header">
+                <h1>Книжная классика <small>Лучшие книги по лучшей цене</small></h1>
+
             {% include "mainapp/includes/inc_menu.html" %}
-        </div>
+            </div>
         <hr>
         <h2>Приветствуем, {{ username | default_if_none:"%юзернейм%" | title }}</h2>
         <div class="main-content">
