@@ -299,3 +299,20 @@ textarea {
 .navbar-brand .logo {
     height: 30px;
 }
+
+.row {
+    margin-right: 317px;
+    margin-left: 317px;
+}
+
+.caption h3 {
+    font-size: 14px;
+}
+
+.thumbnail a>img{
+    height: 300px;
+}
+
+.container{
+    min-height: 60hv;
+}
