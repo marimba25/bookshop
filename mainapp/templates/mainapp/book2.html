@@ -46,27 +46,27 @@
         </nav>
             <div>
 
-         <div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="{{ book.cover.url }}" height="200">
-    </a>
-      <h3>{{ book.author }} <br>{{ book.title }} <span class="label label-default"></span></h3>
+                <div class="productinfo">
+                    <div>
 
 
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">
-        {{ book.price }} руб. <br>
-        <a href="{% url 'basket:add' book.pk %}" class="square_btn">Купить</a>
-                         <br>
-        {{ book.description }}<br> Количество страниц - {{ book.counts_of_sheets }}
+                            <img src="{{ book.cover.url }}" height="200">
+                    </div>
+                    <div>
+                        <h2 class="title">{{ book.author }} "{{ book.title }}"</h2>
+                        <div class="price">
+                            {{ book.price }} руб.
+                        </div>
+                        <a href="{% url 'basket:add' book.pk %}">
+                        <button type="button" class="book-buy">Купить
+                        </button>
+                        </a>
+                        <p class="description">{{ book.description }}<br> Количество страниц - {{ book.counts_of_sheets }}
                             {% if book.format %}
-                            Формат {{ book.format.height }}*{{ book.format.width }} мм
-                            {% endif %}</h4>
-
-  </div>
-</div>
+                            Формат {{ book.format.height }}*{{ book.format.width }} мм</p>
+                            {% endif %}
+                    </div>
+                </div>
             </div>
     <div>
                 {% include "mainapp/includes/inc_footer.html" %}
