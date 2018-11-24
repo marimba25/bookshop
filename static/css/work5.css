@@ -122,9 +122,6 @@ li {
 }
 
 .description {
-    color: #484343;
-    font-weight: 400;
-    line-height: 24px;
     text-align: left;
 }
 
@@ -328,6 +325,8 @@ textarea {
 
 .media h3 {
     margin-left: 372px;
+    margin-right: 41px;
+    text-align: center;
 }
 
 
@@ -339,10 +338,16 @@ textarea {
     color: #FFF;
     border-bottom: solid 4px #627295;
     border-radius: 3px;
+    height: 60px;
+    width: 200px;
 }
 .square_btn:active {/*on Click*/
     -ms-transform: translateY(4px);
     -webkit-transform: translateY(4px);
     transform: translateY(4px);/*Move down*/
     border-bottom: none;/*disappears*/
+}
+
+.media-heading {
+    text-align: center;
 }

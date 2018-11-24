@@ -21,7 +21,7 @@
 
             {% include "mainapp/includes/inc_menu.html" %}
             </div>
-        </div>
+
                 <nav class="navbar navbar-default">
             <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -58,9 +58,9 @@
   <div class="media-body">
     <h4 class="media-heading">
         {{ book.price }} руб. <br>
-        <a href="{% url 'basket:add' book.pk %}" class="square_btn">Купить</a>
+        <a href="{% url 'basket:add' book.pk %}" class="btn btn-primary btn-lg active" role="button">КУПИТЬ</a>
                          <br>
-        {{ book.description }}<br> Количество страниц - {{ book.counts_of_sheets }}
+        <div class="description">{{ book.description }}</div><br> Количество страниц - {{ book.counts_of_sheets }}
                             {% if book.format %}
                             Формат {{ book.format.height }}*{{ book.format.width }} мм
                             {% endif %}</h4>
@@ -70,6 +70,7 @@
             </div>
     <div>
                 {% include "mainapp/includes/inc_footer.html" %}
+    </div>
     </div>
 
             </div>
