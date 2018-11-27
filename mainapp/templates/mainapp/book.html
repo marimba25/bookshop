@@ -57,7 +57,8 @@
   </div>
   <div class="media-body">
     <h4 class="media-heading">
-        {{ book.price }} руб. <br>
+        <div class="price">
+            {{ book.price }} руб.</div> <br>
         <a href="{% url 'basket:add' book.pk %}" class="btn btn-primary btn-lg active" role="button">КУПИТЬ</a>
                          <br>
         <div class="description">{{ book.description }}</div><br> Количество страниц - {{ book.counts_of_sheets }}
